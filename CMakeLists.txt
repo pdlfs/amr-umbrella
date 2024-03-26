@@ -88,7 +88,15 @@ list(APPEND UMBRELLA_CMAKECACHE -DMPI_CXX_SKIP_MPICXX:BOOL=${MPI_CXX_SKIP_MPICXX
 #
 # set git tags to the versions we want to stick to by default...
 #
-umbrella_opt_default (PDLFS_SCRIPTS_TAG "main")
+
+# pick up script changes from alt amr-tools repo
+umbrella_opt_default (AMR_TOOLS_REPO "https://github.com/chuckcranor/amr.git")
+umbrella_opt_default (AMR_TOOLS_TAG "0c966543")      # 25-Mar-2024
+umbrella_opt_default (GLOG_TAG "v0.6.0")
+umbrella_opt_default (KOKKOS_TAG "3.5.00")
+umbrella_opt_default (PARTHENON_TAG "8364b3be")      # 25-Mar-2024
+umbrella_opt_default (PDLFS_COMMON_TAG "a495ed80")   # 25-Mar-2024
+umbrella_opt_default (PDLFS_SCRIPTS_TAG "a067a13d")  # 25-Mar-2024
 
 #
 # any additional cache variables we want to add that are not already
@@ -103,8 +111,17 @@ message (STATUS "  amr_verbose: ${AMR_VERBOSE}")
 # set other configs before we start pulling in the pieces...
 #
 
+umbrella_opt_default (PARTHENON_DISABLE_HDF5 ON)
+umbrella_opt_default (PARTHENON_DISABLE_OPENMP ON)
+umbrella_opt_default (Kokkos_ENABLE_AGGRESSIVE_VECTORIZATION ON) # XXX?
+
+
 set (PDLFS_OPTIONS -DPDLFS_MERCURY_RPC=OFF -DPDLFS_SNAPPY=OFF
     -DPDLFS_GFLAGS=OFF -DPDLFS_GLOG=ON
   -DPDLFS_VERBOSE=${AMR_VERBOSE})
 
+include (umbrella/amr-tools)
+include (umbrella/kokkos)
+include (umbrella/parthenon)
+include (umbrella/pdlfs-common)
 include (umbrella/pdlfs-scripts)
