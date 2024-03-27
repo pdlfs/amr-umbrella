@@ -6,12 +6,12 @@ Download, build, and install amr and its dependencies in a single highly-automat
 
 All pdlfs repositories are mirrored at both github.com and one pdlfs-internal git server running at dev.pdl.cmu.edu.
 
-**The purpose of this guild to show fellow pdlfs internal developers the steps of
+**The purpose of this guide to show fellow pdlfs internal developers the steps of
 properly setting up the repository and syncing the mirrors at both github.com and dev.pdl.cmu.edu.**
 
 ## Local repository setup guide
 
-We will use dev.pdl.cmu.edu as our primary git repository, and github.com as our secondary repository.
+We will use dev.pdl.cmu.edu as our primary git repository, and github.com as our secondary repository.  Once setup, you can push to both repositories using the "git push all" command.
 
 ```bash
 # First, git-clone from dev.pdl.cmu.edu
