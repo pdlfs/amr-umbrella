@@ -74,9 +74,11 @@ set (MPI_CXX_SKIP_MPICXX ON CACHE BOOL "True if MPICXX should be skipped")
 project (amr-umbrella C CXX)
 
 #
-# configure umbrella for MPI and pull in the main routines
+# configure umbrella and pull in the main routines
 #
-set (UMBRELLA_MPI 1)
+set (UMBRELLA_MPI 1)             # amr-umbrella uses MPI
+set (UMBRELLA_HAS_GNULIBDIRS 1)  # our pkgs use cmake GNUInstallDirs
+
 include (umbrella-main)
 
 #
