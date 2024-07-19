@@ -76,6 +76,8 @@ ExternalProject_Add (mvapich DEPENDS rdma-core ${mvapich_xtradeps}
     ${MVAPICH_DOWNLOAD} ${MVAPICH_PATCHCMD}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure ${UMBRELLA_COMP}
                       ${UMBRELLA_CPPFLAGS} ${UMBRELLA_LDFLAGS}
+                      FFLAGS=-fallow-argument-mismatch
+                      FCFLAGS=-fallow-argument-mismatch
                       --prefix=${CMAKE_INSTALL_PREFIX}
                       ${mvapich_withdev}
                       BUILD_IN_SOURCE 1  # XXX: bug. fails w/o this.
