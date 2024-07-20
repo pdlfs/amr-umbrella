@@ -30,11 +30,17 @@ umbrella_patchcheck (KOKKOS_PATCHCMD kokkos)
     # TEST_COMMAND ctest -R preload -V )
 
 #
+# depends
+#
+set (KOKKOS_DEPENDS )
+
+#
 # create kokkos target
 #
 ExternalProject_Add (kokkos
+    DEPENDS ${KOKKOS_DEPENDS}
     ${KOKKOS_DOWNLOAD} ${KOKKOS_PATCHCMD}
-    CMAKE_ARGS -DKokkos_ENABLE_AGGRESSIVE_VECTORIZATION=ON
+    CMAKE_ARGS -DBUILD_SHARED_LIBS=ON -DKokkos_ENABLE_AGGRESSIVE_VECTORIZATION=ON
     CMAKE_CACHE_ARGS ${UMBRELLA_CMAKECACHE}
     UPDATE_COMMAND ""
 )

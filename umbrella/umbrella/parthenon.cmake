@@ -53,10 +53,6 @@ set (PARTHENON_CMAKE_ARGS
   -DPARTHENON_ENABLE_TESTING=OFF
   -DKokkos_ENABLE_OPENMP=${Kokkos_ENABLE_OPENMP})
 
-if (UMBRELLA_MPI_DEPS)
-    include (umbrella/${UMBRELLA_MPI_DEPS})
-endif()
-
 #
 # create parthenon target
 #
